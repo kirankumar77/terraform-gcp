@@ -1,0 +1,37 @@
+#download the ubuntu image
+
+resource "docker_image" "image_id" {
+  name = "ghost:latest"
+}
+
+
+terraform validate - syntax verification 
+
+
+terraform init   -> download required packages 
+
+.terraform folder will create -- plugins there
+
+terraform validate - > no output means no errors 
+
+terraform plan -> pull docker latest image -->will give data what you are going to create 
+
+terraform apply -> yes 
+
+
+terraform destroy ->
+
+
+# Start a container
+resource "docker_container" "container_id" {
+  name  = "ghost_blog"
+  image = "${docker_image.image_id.latest}"
+  port {
+    internal = "2368"
+    external = "8082"
+}
+
+
+
+
+sudo curl -O https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip
